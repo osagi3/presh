@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+/*
+  PREFELO BRAND — two colours only
+  Deep Navy: #071A3D  |  White: #FFFFFF
+  Dark mode is default. Edit values here to rebrand.
+*/
+
+:root {
+  --brand-navy: #071a3d;
+  --brand-white: #ffffff;
+}
+
+/* Dark mode (default) — navy background, white text */
+:root,
+.dark {
+  --background: var(--brand-navy);
+  --foreground: var(--brand-white);
+
+  --surface: #0a2247;
+  --surface-elevated: #0d2a52;
+
+  --primary: var(--brand-white);
+  --primary-hover: #e8edf5;
+  --primary-foreground: var(--brand-navy);
+  --primary-muted: rgba(255, 255, 255, 0.1);
+
+  --muted: rgba(255, 255, 255, 0.72);
+  --muted-subtle: rgba(255, 255, 255, 0.48);
+
+  --border: rgba(255, 255, 255, 0.14);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+}
+
+/* Light mode — white background, navy text */
+.light {
+  --background: var(--brand-white);
+  --foreground: var(--brand-navy);
+
+  --surface: #f4f6f9;
+  --surface-elevated: var(--brand-white);
+
+  --primary: var(--brand-navy);
+  --primary-hover: #0a2247;
+  --primary-foreground: var(--brand-white);
+  --primary-muted: rgba(7, 26, 61, 0.08);
+
+  --muted: rgba(7, 26, 61, 0.68);
+  --muted-subtle: rgba(7, 26, 61, 0.45);
+
+  --border: rgba(7, 26, 61, 0.12);
+  --border-subtle: rgba(7, 26, 61, 0.07);
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-muted: var(--primary-muted);
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-subtle: var(--muted-subtle);
+  --color-border: var(--border);
+  --color-border-subtle: var(--border-subtle);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-cormorant);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::selection {
+  background: var(--primary-muted);
+  color: var(--foreground);
+}
+
+/* Nav logo — white on dark, brand navy on light */
+.dark {
+  --logo-filter: brightness(0) invert(1);
+}
+
+.light {
+  --logo-filter: brightness(0) saturate(100%) invert(9%) sepia(47%) saturate(2718%)
+    hue-rotate(201deg) brightness(95%) contrast(101%);
+}
+
+.logo-nav {
+  filter: var(--logo-filter);
+}
